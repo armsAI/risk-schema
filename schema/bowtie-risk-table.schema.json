@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://armsai.net/schema/bowtie-risk-table.schema.json",
+  "title": "Bowtie Risk Table",
+  "description": "A structured risk assessment following the Bowtie methodology. Models hazards with their top events, threats (causes), consequences (effects), and barriers (controls) at each level.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the risk table."
+    },
+    "hazards": {
+      "type": "array",
+      "description": "Top-level hazards identified in the assessment.",
+      "items": { "$ref": "#/$defs/Hazard" }
+    }
+  },
+  "required": ["hazards"],
+  "$defs": {
+    "Hazard": {
+      "type": "object",
+      "description": "A hazard — the central element of a Bowtie diagram. Represents a source of potential harm with an associated top event.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (e.g. HAZ-001)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Short name for the hazard."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the hazard."
+        },
+        "topEventName": {
+          "type": "string",
+          "description": "The top event — the moment the hazard is realised (e.g. 'Loss of containment')."
+        },
+        "topEventDescription": {
+          "type": "string",
+          "description": "Detailed description of the top event."
+        },
+        "severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Severity rating (1 = negligible, 5 = catastrophic)."
+        },
+        "likelihood": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Likelihood rating (1 = rare, 5 = almost certain)."
+        },
+        "threats": {
+          "type": "array",
+          "description": "Threats (causes) that could trigger the top event. Shown on the left side of the Bowtie.",
+          "items": { "$ref": "#/$defs/Threat" }
+        },
+        "consequences": {
+          "type": "array",
+          "description": "Consequences (effects) that result from the top event. Shown on the right side of the Bowtie.",
+          "items": { "$ref": "#/$defs/Consequence" }
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Threat": {
+      "type": "object",
+      "description": "A threat — a cause or scenario that could lead to the top event occurring.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (e.g. THR-001)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Short name for the threat."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the threat scenario."
+        },
+        "barriers": {
+          "type": "array",
+          "description": "Preventive barriers — controls that prevent this threat from causing the top event.",
+          "items": { "$ref": "#/$defs/Barrier" }
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Consequence": {
+      "type": "object",
+      "description": "A consequence — an outcome that results from the top event occurring.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (e.g. CON-001)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Short name for the consequence."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the consequence."
+        },
+        "barriers": {
+          "type": "array",
+          "description": "Mitigative barriers — controls that reduce the impact after the top event occurs.",
+          "items": { "$ref": "#/$defs/Barrier" }
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Barrier": {
+      "type": "object",
+      "description": "A barrier — a control measure that either prevents the top event (preventive) or reduces the consequence (mitigative).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (e.g. BAR-001)."
+        },
+        "name": {
+          "type": "string",
+          "description": "Short name for the barrier."
+        },
+        "description": {
+          "type": "string",
+          "description": "How this barrier works and what it controls."
+        },
+        "effectiveness": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Estimated effectiveness of the barrier (0.0 = ineffective, 1.0 = fully effective)."
+        }
+      },
+      "required": ["id", "name"]
+    }
+  }
+}
