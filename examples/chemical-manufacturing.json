@@ -1,0 +1,95 @@
+{
+  "$schema": "../schema/bowtie-risk-table.schema.json",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "hazards": [
+    {
+      "id": "HAZ-001",
+      "name": "Runaway Exothermic Reaction",
+      "description": "Loss of temperature control in a batch reactor during an exothermic synthesis step, leading to thermal runaway with potential for vessel rupture and toxic release.",
+      "topEventName": "Loss of reactor temperature control",
+      "topEventDescription": "Reactor temperature exceeds the maximum allowable temperature for the reaction, and cooling capacity is insufficient to arrest the temperature rise.",
+      "severity": 5,
+      "likelihood": 2,
+      "threats": [
+        {
+          "id": "THR-001",
+          "name": "Cooling System Failure",
+          "description": "Loss of cooling water supply, heat exchanger fouling, or coolant valve failure during the exothermic phase of the reaction.",
+          "barriers": [
+            {
+              "id": "BAR-001",
+              "name": "Redundant Cooling Systems",
+              "description": "Dual cooling circuits with automatic switchover on loss of flow. Emergency chilled water supply from independent tank with gravity feed.",
+              "effectiveness": 0.9
+            },
+            {
+              "id": "BAR-002",
+              "name": "Pre-Batch Cooling System Verification",
+              "description": "Mandatory pre-batch checklist confirming cooling water flow, temperature, pressure, and valve positions before reagent addition begins.",
+              "effectiveness": 0.85
+            }
+          ]
+        },
+        {
+          "id": "THR-002",
+          "name": "Incorrect Reagent Addition Rate",
+          "description": "Reagent added too quickly or in incorrect quantity, causing heat generation to exceed the cooling system's removal capacity.",
+          "barriers": [
+            {
+              "id": "BAR-003",
+              "name": "Automated Dosing Control",
+              "description": "PLC-controlled reagent dosing with flow metering and automatic shutoff. Interlock prevents addition if reactor temperature exceeds setpoint.",
+              "effectiveness": 0.9
+            },
+            {
+              "id": "BAR-004",
+              "name": "Operator Training and Batch Records",
+              "description": "Competency-assessed operators follow validated batch manufacturing record. Two-person verification for critical additions.",
+              "effectiveness": 0.75
+            }
+          ]
+        }
+      ],
+      "consequences": [
+        {
+          "id": "CON-001",
+          "name": "Reactor Vessel Rupture",
+          "description": "Overpressure from thermal runaway exceeds vessel design pressure, causing catastrophic failure and release of reactor contents.",
+          "barriers": [
+            {
+              "id": "BAR-005",
+              "name": "Emergency Relief System",
+              "description": "Rupture disc and relief valve sized for runaway scenario per DIERS methodology. Vents to catch tank or quench system, not atmosphere.",
+              "effectiveness": 0.9
+            },
+            {
+              "id": "BAR-006",
+              "name": "Emergency Quench System",
+              "description": "Automated injection of kill agent (cold solvent or inhibitor) triggered by high-high temperature alarm. Arrests reaction within 30 seconds.",
+              "effectiveness": 0.85
+            }
+          ]
+        },
+        {
+          "id": "CON-002",
+          "name": "Toxic Gas Release to Atmosphere",
+          "description": "Release of toxic reaction byproducts or decomposition gases affecting plant personnel and potentially the surrounding community.",
+          "barriers": [
+            {
+              "id": "BAR-007",
+              "name": "Scrubber and Abatement System",
+              "description": "All reactor vents route through caustic scrubber before atmospheric discharge. Scrubber pH monitored continuously with automatic reagent dosing.",
+              "effectiveness": 0.85
+            },
+            {
+              "id": "BAR-008",
+              "name": "Community Alert System",
+              "description": "Automated community warning sirens triggered by confirmed toxic release detection. Pre-agreed shelter-in-place protocol with local authority.",
+              "effectiveness": 0.7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

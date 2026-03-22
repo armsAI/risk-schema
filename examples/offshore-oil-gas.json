@@ -1,0 +1,185 @@
+{
+  "$schema": "../schema/bowtie-risk-table.schema.json",
+  "id": "f9e8d7c6-5432-1abc-def0-abcdef012345",
+  "hazards": [
+    {
+      "id": "HAZ-001",
+      "name": "Hydrocarbon Release from Process Equipment",
+      "description": "Uncontrolled release of hydrocarbons (oil, gas, or condensate) from process piping, vessels, or wellhead equipment on the offshore platform.",
+      "topEventName": "Loss of containment",
+      "topEventDescription": "Breach in the pressure envelope of process equipment resulting in hydrocarbon release to the platform or sea.",
+      "severity": 5,
+      "likelihood": 3,
+      "threats": [
+        {
+          "id": "THR-001",
+          "name": "Internal Corrosion",
+          "description": "CO2 or H2S corrosion causing wall thinning in pipework and vessels, particularly at bends, dead legs, and areas of low flow velocity.",
+          "barriers": [
+            {
+              "id": "BAR-001",
+              "name": "Corrosion Management Programme",
+              "description": "Risk-based inspection programme with ultrasonic thickness measurement at documented TMLs. Corrosion inhibitor injection with residual monitoring.",
+              "effectiveness": 0.85
+            },
+            {
+              "id": "BAR-002",
+              "name": "Material Selection and Corrosion Allowance",
+              "description": "Design-phase material selection based on corrosion modelling. Minimum 3mm corrosion allowance on carbon steel systems. CRA materials for high-risk circuits.",
+              "effectiveness": 0.9
+            }
+          ]
+        },
+        {
+          "id": "THR-002",
+          "name": "Mechanical Seal or Gasket Failure",
+          "description": "Failure of flange gaskets, valve packing, or rotating equipment seals due to fatigue, thermal cycling, or incorrect installation.",
+          "barriers": [
+            {
+              "id": "BAR-003",
+              "name": "Competency-Assured Joint Integrity",
+              "description": "All bolted joints made up by competency-assessed technicians using calibrated torque equipment. Joint register with 100% traceability.",
+              "effectiveness": 0.85
+            }
+          ]
+        },
+        {
+          "id": "THR-003",
+          "name": "Overpressure Event",
+          "description": "Process pressure exceeds design limits due to blocked outlet, thermal expansion, or upstream well control event.",
+          "barriers": [
+            {
+              "id": "BAR-004",
+              "name": "Pressure Safety Valves (PSVs)",
+              "description": "Independently verified PSVs sized per API 520/521, tested annually. Relief headers routed to flare system.",
+              "effectiveness": 0.95
+            },
+            {
+              "id": "BAR-005",
+              "name": "High-Integrity Pressure Protection System (HIPPS)",
+              "description": "SIL-3 rated HIPPS on high-risk segments with automatic isolation on high-high pressure. Independent of the main control system.",
+              "effectiveness": 0.95
+            }
+          ]
+        }
+      ],
+      "consequences": [
+        {
+          "id": "CON-001",
+          "name": "Fire or Explosion",
+          "description": "Ignition of released hydrocarbons resulting in jet fire, pool fire, or vapour cloud explosion on the platform.",
+          "barriers": [
+            {
+              "id": "BAR-006",
+              "name": "Gas Detection and Emergency Shutdown",
+              "description": "Fixed and portable gas detectors with automatic ESD activation at confirmed gas detection. Isolation of ignition sources within 3 seconds.",
+              "effectiveness": 0.85
+            },
+            {
+              "id": "BAR-007",
+              "name": "Active Fire Protection",
+              "description": "Deluge system with firewater pumps (diesel and electric). Foam injection on helideck and process areas. Manual firefighting equipment.",
+              "effectiveness": 0.8
+            },
+            {
+              "id": "BAR-008",
+              "name": "Passive Fire Protection",
+              "description": "PFP coatings on structural steel, firewalls between modules, and blast walls rated to defined overpressure scenarios.",
+              "effectiveness": 0.9
+            }
+          ]
+        },
+        {
+          "id": "CON-002",
+          "name": "Environmental Pollution",
+          "description": "Hydrocarbon discharge to sea causing marine pollution, regulatory breach, and reputational damage.",
+          "barriers": [
+            {
+              "id": "BAR-009",
+              "name": "Closed Drain System",
+              "description": "All process areas drain to closed drain system with oil-water separation before any overboard discharge. Continuous oil-in-water monitoring.",
+              "effectiveness": 0.85
+            },
+            {
+              "id": "BAR-010",
+              "name": "Oil Spill Response Plan",
+              "description": "Tier 1 response capability on-platform with dispersant, booms, and skimmers. Tier 2 mutual aid agreement with neighbouring operators.",
+              "effectiveness": 0.7
+            }
+          ]
+        },
+        {
+          "id": "CON-003",
+          "name": "Personnel Casualties",
+          "description": "Injury or fatality to platform personnel from blast, thermal radiation, toxic gas exposure, or structural collapse.",
+          "barriers": [
+            {
+              "id": "BAR-011",
+              "name": "Temporary Refuge and Evacuation",
+              "description": "TR rated for defined blast and fire scenarios with HVAC positive pressure. Evacuation via TEMPSC lifeboats and helicopter. Muster drills weekly.",
+              "effectiveness": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HAZ-002",
+      "name": "Dropped Object from Crane Operations",
+      "description": "Loss of load during lifting operations using platform cranes, including personnel transfers, cargo lifts, and equipment handling.",
+      "topEventName": "Dropped load",
+      "topEventDescription": "Load falls from crane during lifting due to rigging failure, mechanical failure, or operator error.",
+      "severity": 5,
+      "likelihood": 2,
+      "threats": [
+        {
+          "id": "THR-004",
+          "name": "Rigging Failure",
+          "description": "Sling, shackle, or rigging hardware fails under load due to overloading, damage, or exceeding SWL.",
+          "barriers": [
+            {
+              "id": "BAR-012",
+              "name": "Lifting Equipment Inspection and Certification",
+              "description": "All lifting equipment colour-coded quarterly, certified annually by competent person. Damaged equipment immediately quarantined.",
+              "effectiveness": 0.9
+            },
+            {
+              "id": "BAR-013",
+              "name": "Lift Planning and Permit to Work",
+              "description": "All lifts require approved lift plan with load calculations, rigging diagram, and exclusion zone. Critical lifts require independent review.",
+              "effectiveness": 0.85
+            }
+          ]
+        }
+      ],
+      "consequences": [
+        {
+          "id": "CON-004",
+          "name": "Struck-By Injury or Fatality",
+          "description": "Personnel struck by falling load or debris in the drop zone or swing radius.",
+          "barriers": [
+            {
+              "id": "BAR-014",
+              "name": "Exclusion Zones and Banksman Control",
+              "description": "Physical barricading of drop zone. Dedicated banksman with stop-work authority. No personnel under suspended loads.",
+              "effectiveness": 0.9
+            }
+          ]
+        },
+        {
+          "id": "CON-005",
+          "name": "Damage to Safety-Critical Equipment",
+          "description": "Dropped load impacts process equipment, pipework, or safety systems causing secondary loss of containment.",
+          "barriers": [
+            {
+              "id": "BAR-015",
+              "name": "Protection of Safety-Critical Equipment",
+              "description": "Steel guards over critical pipework in crane operating radius. No-fly zones over live process areas during heavy lifts.",
+              "effectiveness": 0.8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

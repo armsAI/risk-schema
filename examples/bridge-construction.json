@@ -1,0 +1,154 @@
+{
+  "$schema": "../schema/bowtie-risk-table.schema.json",
+  "id": "b1a2c3d4-5678-9abc-def0-123456789abc",
+  "hazards": [
+    {
+      "id": "HAZ-001",
+      "name": "Structural Collapse During Demolition",
+      "description": "Uncontrolled collapse of the existing bridge structure during demolition activities, potentially affecting workers, equipment, and the waterway below.",
+      "topEventName": "Unplanned structural failure",
+      "topEventDescription": "Load-bearing elements fail in an uncontrolled manner during demolition sequencing, causing partial or complete collapse outside the planned drop zone.",
+      "severity": 5,
+      "likelihood": 2,
+      "threats": [
+        {
+          "id": "THR-001",
+          "name": "Incorrect Demolition Sequence",
+          "description": "Structural elements removed in the wrong order, causing unexpected load transfer and progressive failure of remaining sections.",
+          "barriers": [
+            {
+              "id": "BAR-001",
+              "name": "Structural Engineering Assessment",
+              "description": "Independent structural engineer reviews and approves the demolition sequence plan, including load path analysis for each removal stage.",
+              "effectiveness": 0.85
+            },
+            {
+              "id": "BAR-002",
+              "name": "Real-Time Structural Monitoring",
+              "description": "Tilt sensors, strain gauges, and crack monitors installed at critical points with automated alerts when thresholds are exceeded.",
+              "effectiveness": 0.75
+            }
+          ]
+        },
+        {
+          "id": "THR-002",
+          "name": "Unknown Structural Deterioration",
+          "description": "Hidden corrosion, concrete spalling, or rebar degradation from 60 years of service not identified in pre-demolition surveys.",
+          "barriers": [
+            {
+              "id": "BAR-003",
+              "name": "Comprehensive Pre-Demolition Survey",
+              "description": "Non-destructive testing (GPR, ultrasonic) and core sampling at critical structural joints before demolition begins.",
+              "effectiveness": 0.7
+            }
+          ]
+        }
+      ],
+      "consequences": [
+        {
+          "id": "CON-001",
+          "name": "Worker Fatalities or Serious Injuries",
+          "description": "Personnel struck by falling structural elements, debris, or caught in collapse zone.",
+          "barriers": [
+            {
+              "id": "BAR-004",
+              "name": "Exclusion Zones and Access Control",
+              "description": "Physical barriers and GPS-tracked personnel exclusion zones enforced around active demolition areas with 50m buffer beyond calculated debris fall radius.",
+              "effectiveness": 0.9
+            },
+            {
+              "id": "BAR-005",
+              "name": "Emergency Response Plan",
+              "description": "On-site emergency response team with rescue equipment, first aid, and direct hospital communication. Drill conducted weekly.",
+              "effectiveness": 0.6
+            }
+          ]
+        },
+        {
+          "id": "CON-002",
+          "name": "Waterway Obstruction",
+          "description": "Debris falls into the commercial waterway, blocking vessel traffic and potentially damaging passing vessels.",
+          "barriers": [
+            {
+              "id": "BAR-006",
+              "name": "Marine Traffic Management",
+              "description": "Harbour master coordination with vessel exclusion windows during critical demolition lifts. Guard boats stationed upstream and downstream.",
+              "effectiveness": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HAZ-002",
+      "name": "Deep Piling Operations Near Existing Infrastructure",
+      "description": "30-metre deep piling for new bridge foundations, conducted adjacent to live utilities, the active waterway, and residential properties.",
+      "topEventName": "Pile deviation or ground instability",
+      "topEventDescription": "Piles deviate from alignment or piling vibrations cause ground settlement affecting adjacent structures and underground utilities.",
+      "severity": 4,
+      "likelihood": 3,
+      "threats": [
+        {
+          "id": "THR-003",
+          "name": "Encountering Unknown Underground Services",
+          "description": "Uncharted utilities, old bridge foundations, or abandoned infrastructure encountered during piling that are not shown on service drawings.",
+          "barriers": [
+            {
+              "id": "BAR-007",
+              "name": "Ground Penetrating Radar Survey",
+              "description": "Full GPR survey of all piling locations to 35m depth, cross-referenced with utility provider records and historical bridge drawings.",
+              "effectiveness": 0.8
+            },
+            {
+              "id": "BAR-008",
+              "name": "Trial Holes and Soft Dig",
+              "description": "Vacuum excavation trial holes at each pile location before piling rig mobilisation to physically confirm ground conditions.",
+              "effectiveness": 0.9
+            }
+          ]
+        },
+        {
+          "id": "THR-004",
+          "name": "Excessive Vibration from Piling",
+          "description": "Impact or vibratory piling transmits ground vibrations exceeding safe limits to adjacent residential buildings and buried utilities.",
+          "barriers": [
+            {
+              "id": "BAR-009",
+              "name": "Vibration Monitoring and Limits",
+              "description": "Continuous vibration monitors on nearest residential properties with automatic piling shutdown if PPV exceeds 5mm/s.",
+              "effectiveness": 0.85
+            }
+          ]
+        }
+      ],
+      "consequences": [
+        {
+          "id": "CON-003",
+          "name": "Damage to Residential Properties",
+          "description": "Settlement or vibration damage to adjacent residential buildings, including cracking, structural movement, or utility disruption.",
+          "barriers": [
+            {
+              "id": "BAR-010",
+              "name": "Pre-Condition Survey and Settlement Monitoring",
+              "description": "Detailed building condition surveys before works commence. Optical level monitoring points on all properties within 50m, read daily.",
+              "effectiveness": 0.8
+            }
+          ]
+        },
+        {
+          "id": "CON-004",
+          "name": "Utility Strike and Service Disruption",
+          "description": "Damage to gas, water, electricity, or telecoms infrastructure causing service outages to the residential area.",
+          "barriers": [
+            {
+              "id": "BAR-011",
+              "name": "Utility Protection Agreements",
+              "description": "Formal protection agreements with each utility provider. Asset protection measures (concrete slabbing, hand dig zones) implemented before piling.",
+              "effectiveness": 0.85
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
